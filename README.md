@@ -5,7 +5,7 @@ A maintentance module for Magento
 
 Installation
 ------------
-Supposed you know what ![modman](https://github.com/colinmollenhour/modman) is, you can simply install this module using the following commands:
+Supposed you know what [modman](https://github.com/colinmollenhour/modman) is, you can simply install this module using the following commands:
 
 ```
 modman init
