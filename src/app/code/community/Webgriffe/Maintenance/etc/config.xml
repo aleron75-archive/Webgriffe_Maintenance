@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Webgriffe_Maintenance>
+            <version>1.0.0</version>
+        </Webgriffe_Maintenance>
+    </modules>
+    
+    <global>
+        <models>
+            <wgmnt>
+                <class>Webgriffe_Maintenance_Model</class>
+            </wgmnt>
+        </models>
+
+        <helpers>
+            <wgmnt>
+                <class>Webgriffe_Maintenance_Helper</class>
+            </wgmnt>
+        </helpers>
+        
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <wgmnt_front_init_before>
+                        <type>singleton</type>
+                        <class>Webgriffe_Maintenance_Controller_Router</class>
+                        <method>initControllerRouters</method>
+                    </wgmnt_front_init_before>
+                </observers>
+            </controller_front_init_before>
+        </events>
+    </global>
+    
+    <frontend>
+        <routers>
+            <wgmnt>
+                <use>standard</use>
+                <args>
+                    <module>Webgriffe_Maintenance</module>
+                    <frontName>wgmnt</frontName>
+                </args>
+            </wgmnt>
+        </routers>
+    </frontend>
+    
+    <default>
+        <system>
+            <wg_maintenance>
+                <active>0</active>
+                <debug>1</debug>
+            </wg_maintenance>
+        </system>
+    </default>
+</config>
