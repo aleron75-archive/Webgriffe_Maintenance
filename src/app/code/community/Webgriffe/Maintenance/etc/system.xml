@@ -41,7 +41,7 @@
                         </cms_page>
                         <bypassed_ips translate="label,comment">
                             <label>Bypassed IPs</label>
-                            <comment>You can specify a comma separated list of IP addresses which bypass the maintenance page.</comment>
+                            <comment>You can specify a comma separated list of IP addresses which bypass the maintenance page. You can also use wildcards, i.e. 192.168.1.*</comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
