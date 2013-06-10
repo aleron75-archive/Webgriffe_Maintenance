@@ -30,8 +30,18 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </debug>
+                        <show translate="label">
+                            <label>Show</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>wgmnt/system_config_source_show</source_model>
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show>
                         <cms_page translate="label">
-                            <label>Maintenance Page</label>
+                            <depends><show>cms</show></depends>
+                            <label>CMS Page</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_cms_page</source_model>
                             <sort_order>20</sort_order>
@@ -39,6 +49,16 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </cms_page>
+                        <msg translate="label,comment">
+                            <depends><show>msg</show></depends>
+                            <label>Custom Message</label>
+                            <comment>HTML is allowed</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </msg>
                         <bypassed_ips translate="label,comment">
                             <label>Bypassed IPs</label>
                             <comment>You can specify a comma separated list of IP addresses which bypass the maintenance page. You can also use wildcards, i.e. 192.168.1.*</comment>

@@ -21,16 +21,34 @@ class Webgriffe_Maintenance_Controller_Router extends Mage_Core_Controller_Varie
             if (Mage::app()->getStore()->isAdmin() || $str_pos === 1) {
                 return false;
             }
-//            The following allows you to user your own controller/action instead of CMS Page
-//            $moduleName = 'wgmnt';
-//            $controllerName = 'index';
-//            $actionName = 'index';
-            $moduleName = 'cms';
-            $controllerName = 'page';
-            $actionName = 'view';
-            $pageId = $helper->getMaintenancePageId();
+
+            $requestParams = array();
+
+            $show = Mage::helper('wgmnt')->getShowMode();
+
+            switch ($show) {
+
+                case Webgriffe_Maintenance_Model_System_Config_Source_Show::MODE_CMS:
+                    $moduleName = 'cms';
+                    $controllerName = 'page';
+                    $actionName = 'view';
+                    $pageId = $helper->getMaintenancePageId();
+                    $requestParams['page_id'] = $pageId;
+                    break;
+
+                case Webgriffe_Maintenance_Model_System_Config_Source_Show::MODE_MSG:
+                    $moduleName = 'wgmnt';
+                    $controllerName = 'index';
+                    $actionName = 'index';
+                    break;
+
+            }
+
+            foreach ($requestParams as $paramKey => $paramVal) {
+                $request->setParam($paramKey, $paramVal);
+            }
+
             $request
-                    ->setParam('page_id', $pageId)
                     ->setModuleName($moduleName)
                     ->setControllerName($controllerName)
                     ->setActionName($actionName);

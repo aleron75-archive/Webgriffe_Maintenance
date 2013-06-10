@@ -45,4 +45,12 @@ class Webgriffe_Maintenance_Helper_Data extends Mage_Core_Helper_Data {
     public function getMaintenancePageId() {
         return Mage::getStoreConfig('system/wg_maintenance/cms_page');
     }
+
+    public function getCustomMessage() {
+        return Mage::getStoreConfig('system/wg_maintenance/msg');
+    }
+
+    public function getShowMode() {
+        return Mage::getStoreConfig('system/wg_maintenance/show');
+    }
 }

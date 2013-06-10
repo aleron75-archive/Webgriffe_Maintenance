@@ -48,6 +48,8 @@
         <system>
             <wg_maintenance>
                 <active>0</active>
+                <show>msg</show>
+                <msg>Under maintenance</msg>
                 <debug>1</debug>
             </wg_maintenance>
         </system>
