@@ -56,4 +56,19 @@ class Webgriffe_Maintenance_Helper_Data extends Mage_Core_Helper_Data {
     public function getShowMode() {
         return Mage::getStoreConfig('system/wg_maintenance/show');
     }
+
+    public function isBasicAuthActive()
+    {
+        return Mage::getStoreConfig('system/wg_basicauth/active');
+    }
+
+    public function getBasicAuthUsername()
+    {
+        return Mage::getStoreConfig('system/wg_basicauth/username');
+    }
+
+    public function getBasicAuthPassword()
+    {
+        return Mage::getStoreConfig('system/wg_basicauth/password');
+    }
 }
