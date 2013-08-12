@@ -23,10 +23,13 @@ class Webgriffe_Maintenance_Helper_Data extends Mage_Core_Helper_Data {
 
     public function bypassIp() {
         $bypassedIps = explode(',', Mage::getStoreConfig('system/wg_maintenance/bypassed_ips'));
-        $bypassedIps = array_filter($bypassedIps, function($item) { return !empty($item); });
-        for ($i = 0, $count = count($bypassedIps); $i < $count; $i ++) {
-            $bypassedIps[$i] = trim($bypassedIps[$i]);
+
+        if ($bypassedIps && !empty($bypassedIps)) {
+            for ($i = 0, $count = count($bypassedIps); $i < $count; $i ++) {
+                $bypassedIps[$i] = trim($bypassedIps[$i]);
+            }
         }
+
         return ($this->_check($this->_getCurrentIp(), $bypassedIps));
     }
 
@@ -52,5 +55,20 @@ class Webgriffe_Maintenance_Helper_Data extends Mage_Core_Helper_Data {
 
     public function getShowMode() {
         return Mage::getStoreConfig('system/wg_maintenance/show');
+    }
+
+    public function isBasicAuthActive()
+    {
+        return Mage::getStoreConfig('system/wg_basicauth/active');
+    }
+
+    public function getBasicAuthUsername()
+    {
+        return Mage::getStoreConfig('system/wg_basicauth/username');
+    }
+
+    public function getBasicAuthPassword()
+    {
+        return Mage::getStoreConfig('system/wg_basicauth/password');
     }
 }
