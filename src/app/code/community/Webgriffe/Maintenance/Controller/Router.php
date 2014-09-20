@@ -52,36 +52,12 @@ class Webgriffe_Maintenance_Controller_Router extends Mage_Core_Controller_Varie
                     ->setModuleName($moduleName)
                     ->setControllerName($controllerName)
                     ->setActionName($actionName);
-        } elseif ($helper->isBasicAuthActive()) {
-            if (!isset($_SERVER['PHP_AUTH_USER'])) {
-                header('WWW-Authenticate: Basic realm="My Realm"');
-                header('HTTP/1.0 401 Unauthorized');
-                echo '<response><error>Uh-oh, you need to enter the username and password.</error></response>';
-                exit;
-            } else {
-                if (! $this->_isBasicAuthCorrect()) {
-                    header('HTTP/1.0 401 Unauthorized');
-                    echo '<response><error>Wrong username or password</error></response>';
-                    exit;
-                }
-            }
-        }
 
+            $response = Mage::app()->getFrontController()->getResponse();
+            $response->setHeader('HTTP/1.1','503');
+            $response->setHeader('Status','503 Service Unavailable');
+        }
         return false;
     }
 
-    protected function _isBasicAuthCorrect()
-    {
-        $helper = Mage::helper('wgmnt');
-
-        if ($_SERVER['PHP_AUTH_USER'] != $helper->getBasicAuthUsername()) {
-            return false;
-        }
-
-        if ($helper->getBasicAuthPassword() && $_SERVER['PHP_AUTH_PW'] != $helper->getBasicAuthPassword()) {
-            return false;
-        }
-
-        return true;
-    }
 }
