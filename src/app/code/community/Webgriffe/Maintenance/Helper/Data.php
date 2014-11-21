@@ -6,15 +6,7 @@ class Webgriffe_Maintenance_Helper_Data extends Mage_Core_Helper_Data {
     }
 
     protected function _getCurrentIp() {
-        if (isset($_SERVER['REMOTE_ADDR'])) {
-            return $_SERVER['REMOTE_ADDR'];
-        }
-
-        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            return $_SERVER['HTTP_X_FORWARDED_FOR'];
-        }
-
-        return '0.0.0.0';
+        return Mage::app()->getRequest()->getClientIp();
     }
 
     public function isActive() {
