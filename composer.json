@@ -1,0 +1,12 @@
+{
+    "name": "aleron75/webgriffe-maintenance",
+    "type": "magento-module",
+    "license":"OSL-3.0",
+    "description":"Maintenance module for Magento.",
+    "authors":[
+        {
+            "name":"Alessandro Ronchi",
+            "email":"aleron75@gmail.com"
+        }
+    ]
+}
