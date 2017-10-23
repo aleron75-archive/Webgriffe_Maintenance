@@ -3,6 +3,8 @@ Webgriffe_Maintenance
 
 A maintentance module for Magento 
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 Installation
 ------------
 Supposed you know what [modman](https://github.com/colinmollenhour/modman) is, you can simply install this module using the following commands:
